@@ -24,6 +24,8 @@ sonar.projectKey=<replace with the key generated when setting up the project on 
 sonar.sources=.
 ```
 
+You can change the base directory by using the optional environment variable `SONAR_PROJECT_BASE_DIR`
+
 The workflow, usually declared in `.github/workflows/build.yml`, looks like:
 
 ```yaml
