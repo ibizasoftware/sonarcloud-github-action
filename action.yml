@@ -5,4 +5,4 @@ branding:
   color: 'green'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://docker.pkg.github.com/ibizasoftware/sonarcloud-github-action/master:latest'
