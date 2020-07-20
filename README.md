@@ -35,14 +35,23 @@ with:
 The workflow, usually declared in `.github/workflows/build.yml`, looks like:
 
 ```yaml
-on: push
+on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request. 
+  push:
+    branches:
+      - master
+  pull_request:
+      types: [opened, synchronize, reopened]
 name: Main Workflow
 jobs:
-  sonarCloudTrigger:
-    name: SonarCloud Trigger
+  sonarcloud:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
